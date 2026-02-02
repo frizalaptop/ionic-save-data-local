@@ -3,13 +3,13 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Tambah Mahasiswa</ion-title>
+    <ion-title>Ubah Mahasiswa</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <form [formGroup]="formMahasiswa" (ngSubmit)="simpanData()">
+  <form [formGroup]="formMahasiswa" (ngSubmit)="ubahData()">
 
     <ion-item>
       <ion-input label="Nama Lengkap" labelPlacement="floating"
@@ -50,7 +50,7 @@
 
     <div class="ion-margin-top">
       <ion-button expand="block" type="submit" [disabled]="!formMahasiswa.valid">
-        Simpan Data
+        Ubah Data
       </ion-button>
     </div>
 

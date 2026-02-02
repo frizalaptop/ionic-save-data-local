@@ -5,7 +5,7 @@ import { IonContent, IonHeader, IonItem, IonLabel, IonList, IonTitle, IonToolbar
 
 // 1. Import Icon
 import { addIcons } from 'ionicons';
-import { add } from 'ionicons/icons';
+import { add, pencil, trash } from 'ionicons/icons';
 
 // 2. Import Service Data
 import { DataMahasiswaService } from '../services/data-mahasiswa.service';
@@ -27,7 +27,7 @@ export class HomePage {
     private dataService: DataMahasiswaService,
     private cdr: ChangeDetectorRef // <--- INJECT DI SINI
   ) {
-    addIcons({ add });
+    addIcons({ add, pencil, trash });
   }
 
   // Jalan setiap kali masuk halaman

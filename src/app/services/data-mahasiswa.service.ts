@@ -37,4 +37,45 @@ export class DataMahasiswaService {
       value: JSON.stringify(dataLama)
     });
   }
+
+  // FUNGSI 3: Mengubah Data Berdasarkan ID
+  async ubahData(idMahasiswa: string | null, mahasiswaBaru: any) {
+    // 1. Ambil data lama dulu
+    const dataLama = await this.getData();
+
+    // 2. Cari index mahasiswa yang ingin diubah berdasarkan ID
+    const index = dataLama.findIndex((mhs: any) => mhs.id === parseInt(idMahasiswa!));
+
+    // 3. Jika ditemukan, ganti datanya
+    if (index !== -1) {
+      mahasiswaBaru.id = parseInt(idMahasiswa!); // Pastikan ID tetap sama
+      dataLama[index] = mahasiswaBaru;
+    }
+
+    // 4. Simpan kembali ke Preferences dalam bentuk String (JSON Stringify)
+    return await Preferences.set({
+      key: this.KEY_MAHASISWA,
+      value: JSON.stringify(dataLama)
+    });   
+  }
+
+  // FUNGSI 4: Menghapus Data Berdasarkan ID
+  async hapusData(idMahasiswa: string | null) {
+    // 1. Ambil data lama dulu
+    const dataLama = await this.getData();
+
+    // 2. Cari index mahasiswa yang ingin diubah berdasarkan ID
+    const index = dataLama.findIndex((mhs: any) => mhs.id === parseInt(idMahasiswa!));
+
+    // 3. Jika ditemukan, hapus datanya
+    if (index !== -1) {
+      dataLama.splice(index, 1); // Hapus 1 elemen pada index tersebut
+    }
+    
+    // 3. Simpan kembali ke Preferences dalam bentuk String (JSON Stringify)
+    return await Preferences.set({
+      key: this.KEY_MAHASISWA,
+      value: JSON.stringify(dataLama)
+    });   
+  }
 }
